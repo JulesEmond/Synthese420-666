@@ -1,1 +1,30 @@
-<p>login works!</p>
+<main>
+    <div class="container-fluid">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div *ngIf="validMessage != ''">
+            <h3 class="has-info">{{validMessage}}</h3>
+        </div>
+  
+        <div class="form-group pt-4">
+            <label for="courriel">Nom d'utilisateur</label>
+            <input type="email" class="form-control" id="username"  placeholder="Nom d'utilisateur" formControlName="username">
+          </div>
+        <div class="form-group">
+          <label for="motDePasse">Mot de passe</label>
+          <input type="password" class="form-control" id="password" placeholder="Mot de passe" formControlName="password">
+        </div>
+        
+        <button type="submit" class="btn btn-primary mt-4">Connectez-vous</button>
+    </form>
+  
+    <div class="container-fluid pt-5">
+        <h4>Vous n'avez pas de compte? Inscrivez-vous en tant que :</h4>
+        <div class="row">
+                <button type="button" class="btn btn-primary col-3" [routerLink]="['/signUpGestionnaire']">Gestionnaire</button>
+                <div class = "col-1"></div>
+                <button type="button" class="btn btn-primary col-3" [routerLink]="['/signUpObservateur']">Observateur</button>
+        </div>
+    </div>
+    </div>
+  </main>
+  

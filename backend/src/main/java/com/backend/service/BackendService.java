@@ -18,7 +18,8 @@ private ObservateurRepository observateurRepository;
 
 
     public Gestionnaire signupGestionnaire (Gestionnaire gestionnaire){
-        if (!gestionnaireRepository.existsByUsername(gestionnaire.getUsername())) {
+        if (!gestionnaireRepository.existsByUsername(gestionnaire.getUsername())
+                && !observateurRepository.existsByUsername(gestionnaire.getUsername())) {
             gestionnaireRepository.save(gestionnaire);
             return gestionnaire;
         }
@@ -26,7 +27,8 @@ private ObservateurRepository observateurRepository;
     }
 
     public Observateur signupObservateur (Observateur observateur){
-        if (!observateurRepository.existsByUsername(observateur.getUsername())) {
+        if (!observateurRepository.existsByUsername(observateur.getUsername())
+                && !gestionnaireRepository.existsByUsername(observateur.getUsername())) {
             observateurRepository.save(observateur);
             return observateur;
         }
