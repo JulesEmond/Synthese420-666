@@ -34,7 +34,7 @@ export class SignUpObservateurComponent implements OnInit {
           this.observateur = data;
           if (this.observateur != null){
             this.signinObservateurForm.reset();
-            sessionStorage.setItem('User', JSON.stringify(data));
+            sessionStorage.setItem('User', this.observateur.id.toString());
             this.router.navigate(['/accueil-observateur']);
           } else {
             this.validMessage = "Ce nom d'utilisateur est déjà utilisé pour un autre compte";

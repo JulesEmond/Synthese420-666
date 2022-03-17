@@ -36,7 +36,7 @@ export class SignUpGestionnaireComponent implements OnInit {
           this.gestionnaire = data;
           if (this.gestionnaire != null){
             this.signinGestionnaireForm.reset();
-            sessionStorage.setItem('User', JSON.stringify(data));
+            sessionStorage.setItem('User', this.gestionnaire.id.toString());
             this.router.navigate(['/accueil-gestionnaire']);
           } else {
             this.validMessage = "Ce nom d'utilisateur est déjà utilisé pour un autre compte";

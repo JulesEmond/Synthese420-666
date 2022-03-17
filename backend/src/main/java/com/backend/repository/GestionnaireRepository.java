@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface GestionnaireRepository extends JpaRepository<Gestionnaire, Integer> {
+    Gestionnaire findById(int id);
     Gestionnaire findByUsernameAndPassword(String username, String password);
     boolean existsByUsername(String username);
 }

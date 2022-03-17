@@ -11,6 +11,7 @@ import { SignUpObservateurComponent } from './sign-up-observateur/sign-up-observ
 import { HeaderComponent } from './header/header.component';
 import { AccueilObservateurComponent } from './accueil-observateur/accueil-observateur.component';
 import { AccueilGestionnaireComponent } from './accueil-gestionnaire/accueil-gestionnaire.component';
+import { Header2Component } from './header2/header2.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AccueilGestionnaireComponent } from './accueil-gestionnaire/accueil-ges
     SignUpObservateurComponent,
     HeaderComponent,
     AccueilObservateurComponent,
-    AccueilGestionnaireComponent
+    AccueilGestionnaireComponent,
+    Header2Component
   ],
   imports: [
     BrowserModule,

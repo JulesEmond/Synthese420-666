@@ -36,8 +36,7 @@ export class LoginComponent implements OnInit {
           this.loginForm.reset();
           this.gestionnaire = data;
             if(this.gestionnaire  != null){
-              sessionStorage.setItem('User', JSON.stringify(this.gestionnaire));
-              console.log(JSON.parse(sessionStorage.getItem("User")));
+              sessionStorage.setItem('User', this.gestionnaire.id.toString());
               this.router.navigate(['/accueil-gestionnaire']);
               }
             }
@@ -51,8 +50,7 @@ export class LoginComponent implements OnInit {
               this.loginForm.reset();
               this.observateur = data;
                 if(this.observateur  != null){
-                  sessionStorage.setItem('User', JSON.stringify(this.observateur));
-                  console.log(JSON.parse(sessionStorage.getItem("User")));
+                  sessionStorage.setItem('User', this.observateur.id.toString());
                   this.router.navigate(['/accueil-observateur']);
                   }
                 }

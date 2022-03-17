@@ -40,4 +40,14 @@ public class BackendController {
     public Observateur loginObservateur(@PathVariable("username") String username, @PathVariable("pwd") String password){
         return service.loginObservateur(username, password);
     }
+
+    @GetMapping(value = "/backend/gestionnaire/{id}")
+    public Gestionnaire findGestionnaire(@PathVariable("id") int id){
+        return gestionnaireRepository.findById(id);
+    }
+
+    @GetMapping(value = "/backend/observateur/{id}")
+    public Observateur findObservateur(@PathVariable("id") int id){
+        return observateurRepository.findById(id);
+    }
 }
