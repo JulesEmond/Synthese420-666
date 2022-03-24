@@ -1,12 +1,15 @@
 package com.backend.controller;
 
 import com.backend.model.Gestionnaire;
+import com.backend.model.Ligue;
 import com.backend.model.Observateur;
 import com.backend.repository.GestionnaireRepository;
 import com.backend.repository.ObservateurRepository;
 import com.backend.service.BackendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:9600")
@@ -49,5 +52,15 @@ public class BackendController {
     @GetMapping(value = "/backend/observateur/{id}")
     public Observateur findObservateur(@PathVariable("id") int id){
         return observateurRepository.findById(id);
+    }
+
+    @PostMapping("/backend/ligue")
+    public Ligue createLigue(@RequestBody Ligue ligue) {
+        return service.createLigue(ligue);
+    }
+
+    @GetMapping(value = "/backend/ligue/{id}")
+    public List<Ligue> findByGestionnaire(@PathVariable("id") int id){
+        return service.findByGestionaire(id);
     }
 }

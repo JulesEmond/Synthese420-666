@@ -20,6 +20,10 @@ export class BasicCrud <T, ID> {
     return this.http.get<T>(this.url + '/' + id);
   }
 
+  findByParent(id: ID): Observable<T[]> {
+    return this.http.get<T[]>(this.url + '/' + id);
+  }
+
   update(id: ID, t: T): Observable<T> {
     return this.http.put<T>(this.url + '/' + id, t, {});
   }

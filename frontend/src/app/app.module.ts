@@ -12,6 +12,8 @@ import { HeaderComponent } from './header/header.component';
 import { AccueilObservateurComponent } from './accueil-observateur/accueil-observateur.component';
 import { AccueilGestionnaireComponent } from './accueil-gestionnaire/accueil-gestionnaire.component';
 import { Header2Component } from './header2/header2.component';
+import { CreerLigueComponent } from './creer-ligue/creer-ligue.component';
+import { VoirLigueComponent } from './voir-ligue/voir-ligue.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { Header2Component } from './header2/header2.component';
     HeaderComponent,
     AccueilObservateurComponent,
     AccueilGestionnaireComponent,
-    Header2Component
+    Header2Component,
+    CreerLigueComponent,
+    VoirLigueComponent
   ],
   imports: [
     BrowserModule,
