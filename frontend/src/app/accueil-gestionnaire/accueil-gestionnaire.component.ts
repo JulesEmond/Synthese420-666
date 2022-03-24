@@ -15,9 +15,8 @@ export class AccueilGestionnaireComponent implements OnInit {
 
   constructor(private router: Router, public service: GestionnaireService) { }
 
-
-
   ngOnInit(): void {
+    sessionStorage.removeItem('Ligue')
     this.id = parseInt(sessionStorage.getItem('User'));
     if(this.id == null){
       this.router.navigate(['/login']);

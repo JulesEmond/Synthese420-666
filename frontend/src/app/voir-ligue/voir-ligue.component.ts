@@ -16,6 +16,7 @@ export class VoirLigueComponent implements OnInit {
   constructor(private ligueService: LigueService, private router: Router) {}
 
   ngOnInit(): void {
+      sessionStorage.removeItem('Ligue')
       this.getAllLigues();
   }
 
@@ -31,7 +32,8 @@ export class VoirLigueComponent implements OnInit {
   }
 
   public infoEquipes(ligueId : number) {
-    console.log(ligueId)
+    sessionStorage.setItem('Ligue', ligueId.toString());
+    this.router.navigate(['/mes-equipes']);
   }
 
 }

@@ -1,8 +1,10 @@
 package com.backend.service;
 
+import com.backend.model.Equipe;
 import com.backend.model.Gestionnaire;
 import com.backend.model.Ligue;
 import com.backend.model.Observateur;
+import com.backend.repository.EquipeRepository;
 import com.backend.repository.GestionnaireRepository;
 import com.backend.repository.LigueRepository;
 import com.backend.repository.ObservateurRepository;
@@ -22,6 +24,9 @@ private ObservateurRepository observateurRepository;
 
 @Autowired
 private LigueRepository ligueRepository;
+
+    @Autowired
+    private EquipeRepository equipeRepository;
 
 
     public Gestionnaire signupGestionnaire (Gestionnaire gestionnaire){
@@ -62,6 +67,20 @@ private LigueRepository ligueRepository;
         if(gestionnaire != null){
             List<Ligue> ligues = ligueRepository.findByGestionnaire(gestionnaire);
             return ligues;
+        }
+        return null;
+    }
+
+    public Equipe createEquipe (Equipe equipe){
+        equipeRepository.save(equipe);
+        return equipe;
+    }
+
+    public List<Equipe> findByLigue (int idLigue){
+        Ligue ligue = ligueRepository.findById(idLigue);
+        if(ligue != null){
+            List<Equipe> equipes = equipeRepository.findByLigue(ligue);
+            return equipes;
         }
         return null;
     }

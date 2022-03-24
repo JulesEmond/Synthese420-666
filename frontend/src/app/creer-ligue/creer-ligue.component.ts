@@ -28,6 +28,7 @@ export class CreerLigueComponent implements OnInit {
   constructor(private ligueService: LigueService, private gestionnaireService: GestionnaireService,  private router : Router) { }
 
   ngOnInit(): void {
+    sessionStorage.removeItem('Ligue')
     this.id = parseInt(sessionStorage.getItem('User'));
     if(this.id == null){
       this.router.navigate(['/login']);
@@ -44,7 +45,6 @@ export class CreerLigueComponent implements OnInit {
   onSubmit(){
     this.ligue = this.createLigue.value
     this.ligue.gestionnaire = this.gestionnaire
-    console.log(this.ligue)
     if(this.createLigue.valid){
       this.ligueService.save(this.ligue).subscribe(
         (data) => {
@@ -55,7 +55,6 @@ export class CreerLigueComponent implements OnInit {
           } else {
             this.validMessage = "Erreur lors de la création de la ligue";
           }
-
         },
         (err) => {
           console.log(err);

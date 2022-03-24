@@ -21,7 +21,7 @@ export class BasicCrud <T, ID> {
   }
 
   findByParent(id: ID): Observable<T[]> {
-    return this.http.get<T[]>(this.url + '/' + id);
+    return this.http.get<T[]>(this.url + '/parent/' + id);
   }
 
   update(id: ID, t: T): Observable<T> {

@@ -14,6 +14,8 @@ import { AccueilGestionnaireComponent } from './accueil-gestionnaire/accueil-ges
 import { Header2Component } from './header2/header2.component';
 import { CreerLigueComponent } from './creer-ligue/creer-ligue.component';
 import { VoirLigueComponent } from './voir-ligue/voir-ligue.component';
+import { CreerEquipeComponent } from './creer-equipe/creer-equipe.component';
+import { VoirEquipeComponent } from './voir-equipe/voir-equipe.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { VoirLigueComponent } from './voir-ligue/voir-ligue.component';
     AccueilGestionnaireComponent,
     Header2Component,
     CreerLigueComponent,
-    VoirLigueComponent
+    VoirLigueComponent,
+    CreerEquipeComponent,
+    VoirEquipeComponent
   ],
   imports: [
     BrowserModule,

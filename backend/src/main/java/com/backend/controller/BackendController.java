@@ -1,9 +1,11 @@
 package com.backend.controller;
 
+import com.backend.model.Equipe;
 import com.backend.model.Gestionnaire;
 import com.backend.model.Ligue;
 import com.backend.model.Observateur;
 import com.backend.repository.GestionnaireRepository;
+import com.backend.repository.LigueRepository;
 import com.backend.repository.ObservateurRepository;
 import com.backend.service.BackendService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,9 @@ public class BackendController {
 
     @Autowired
     ObservateurRepository observateurRepository;
+
+    @Autowired
+    LigueRepository ligueRepository;
 
     @PostMapping("/backend/gestionnaire")
     public Gestionnaire signupGestionnaire(@RequestBody Gestionnaire gestionnaire) {
@@ -49,18 +54,33 @@ public class BackendController {
         return gestionnaireRepository.findById(id);
     }
 
-    @GetMapping(value = "/backend/observateur/{id}")
-    public Observateur findObservateur(@PathVariable("id") int id){
-        return observateurRepository.findById(id);
-    }
-
     @PostMapping("/backend/ligue")
     public Ligue createLigue(@RequestBody Ligue ligue) {
         return service.createLigue(ligue);
     }
 
-    @GetMapping(value = "/backend/ligue/{id}")
+    @GetMapping(value = "/backend/ligue/parent/{id}")
     public List<Ligue> findByGestionnaire(@PathVariable("id") int id){
         return service.findByGestionaire(id);
+    }
+
+    @PostMapping("/backend/equipe")
+    public Equipe createEquipe(@RequestBody Equipe equipe) {
+        return service.createEquipe(equipe);
+    }
+
+    @GetMapping(value = "/backend/equipe/parent/{id}")
+    public List<Equipe> findByLigue(@PathVariable("id") int id){
+        return service.findByLigue(id);
+    }
+
+    @GetMapping(value = "/backend/observateur/{id}")
+    public Observateur findObservateur(@PathVariable("id") int id){
+        return observateurRepository.findById(id);
+    }
+
+    @GetMapping(value = "/backend/ligue/{id}")
+    public Ligue findLigue(@PathVariable("id") int id) {
+        return ligueRepository.findById(id);
     }
 }
