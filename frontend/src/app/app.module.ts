@@ -16,6 +16,8 @@ import { CreerLigueComponent } from './creer-ligue/creer-ligue.component';
 import { VoirLigueComponent } from './voir-ligue/voir-ligue.component';
 import { CreerEquipeComponent } from './creer-equipe/creer-equipe.component';
 import { VoirEquipeComponent } from './voir-equipe/voir-equipe.component';
+import { CreerJoueurComponent } from './creer-joueur/creer-joueur.component';
+import { VoirJoueurComponent } from './voir-joueur/voir-joueur.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { VoirEquipeComponent } from './voir-equipe/voir-equipe.component';
     CreerLigueComponent,
     VoirLigueComponent,
     CreerEquipeComponent,
-    VoirEquipeComponent
+    VoirEquipeComponent,
+    CreerJoueurComponent,
+    VoirJoueurComponent
   ],
   imports: [
     BrowserModule,

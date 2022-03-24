@@ -28,9 +28,10 @@ export class CreerEquipeComponent implements OnInit {
   constructor(private equipeService: EquipeService, private ligueService: LigueService,  private router : Router) { }
 
   ngOnInit(): void {
+    sessionStorage.removeItem('Equipe')
     this.id = parseInt(sessionStorage.getItem('Ligue'));
     if(this.id == null){
-      this.router.navigate(['/login']);
+      this.router.navigate(['/accueil-gestionnaire']);
     }
     else {
       this.ligueService.findById(this.id).subscribe(

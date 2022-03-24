@@ -1,0 +1,28 @@
+<app-header></app-header>
+<div class="container py-5">
+    <h1>Liste des joueurs de {{nomEquipe}}</h1>
+    <div *ngIf="validMessage != ''">
+        <h3 class="has-info">{{validMessage}}</h3>
+    </div>
+    <button type="button" (click)="createJoueur()" class="btn btn-lg btn-success my-4">Ajoutez un joueur</button>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+        <th scope="col">Prénom</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Âge</th>
+        <th width="200px">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of listJoueurs; let i = index">
+            <td>{{item.firstName}}</td>
+            <td>{{item.lastName}}</td>
+            <td>{{item.age}}</td>
+            <td>
+                <button type="button" class="btn btn-primary mr-2">Plus d'options</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>

@@ -1,9 +1,7 @@
 package com.backend.controller;
 
-import com.backend.model.Equipe;
-import com.backend.model.Gestionnaire;
-import com.backend.model.Ligue;
-import com.backend.model.Observateur;
+import com.backend.model.*;
+import com.backend.repository.EquipeRepository;
 import com.backend.repository.GestionnaireRepository;
 import com.backend.repository.LigueRepository;
 import com.backend.repository.ObservateurRepository;
@@ -29,6 +27,9 @@ public class BackendController {
     @Autowired
     LigueRepository ligueRepository;
 
+    @Autowired
+    EquipeRepository equipeRepository;
+
     @PostMapping("/backend/gestionnaire")
     public Gestionnaire signupGestionnaire(@RequestBody Gestionnaire gestionnaire) {
         return service.signupGestionnaire(gestionnaire);
@@ -47,11 +48,6 @@ public class BackendController {
     @GetMapping(value = "/backend/observateur/{username}/{pwd}")
     public Observateur loginObservateur(@PathVariable("username") String username, @PathVariable("pwd") String password){
         return service.loginObservateur(username, password);
-    }
-
-    @GetMapping(value = "/backend/gestionnaire/{id}")
-    public Gestionnaire findGestionnaire(@PathVariable("id") int id){
-        return gestionnaireRepository.findById(id);
     }
 
     @PostMapping("/backend/ligue")
@@ -74,6 +70,21 @@ public class BackendController {
         return service.findByLigue(id);
     }
 
+    @PostMapping("/backend/joueur")
+    public Joueur createjoueur(@RequestBody Joueur joueur) {
+        return service.createJoueur(joueur);
+    }
+
+    @GetMapping(value = "/backend/joueur/parent/{id}")
+    public List<Joueur> findByEquipe(@PathVariable("id") int id){
+        return service.findByEquipe(id);
+    }
+
+    @GetMapping(value = "/backend/gestionnaire/{id}")
+    public Gestionnaire findGestionnaire(@PathVariable("id") int id){
+        return gestionnaireRepository.findById(id);
+    }
+
     @GetMapping(value = "/backend/observateur/{id}")
     public Observateur findObservateur(@PathVariable("id") int id){
         return observateurRepository.findById(id);
@@ -82,5 +93,10 @@ public class BackendController {
     @GetMapping(value = "/backend/ligue/{id}")
     public Ligue findLigue(@PathVariable("id") int id) {
         return ligueRepository.findById(id);
+    }
+
+    @GetMapping(value = "/backend/equipe/{id}")
+    public Equipe findEquipe(@PathVariable("id") int id) {
+        return equipeRepository.findById(id);
     }
 }

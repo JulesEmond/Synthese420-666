@@ -31,7 +31,7 @@ export class CreerLigueComponent implements OnInit {
     sessionStorage.removeItem('Ligue')
     this.id = parseInt(sessionStorage.getItem('User'));
     if(this.id == null){
-      this.router.navigate(['/login']);
+      this.router.navigate(['/accueil-gestionnaire']);
     }
     else {
       this.gestionnaireService.findById(this.id).subscribe(

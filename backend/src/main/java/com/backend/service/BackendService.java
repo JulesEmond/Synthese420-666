@@ -1,13 +1,7 @@
 package com.backend.service;
 
-import com.backend.model.Equipe;
-import com.backend.model.Gestionnaire;
-import com.backend.model.Ligue;
-import com.backend.model.Observateur;
-import com.backend.repository.EquipeRepository;
-import com.backend.repository.GestionnaireRepository;
-import com.backend.repository.LigueRepository;
-import com.backend.repository.ObservateurRepository;
+import com.backend.model.*;
+import com.backend.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,17 +10,20 @@ import java.util.List;
 @Service
 public class BackendService {
 
-@Autowired
-private GestionnaireRepository gestionnaireRepository;
+    @Autowired
+    private GestionnaireRepository gestionnaireRepository;
 
-@Autowired
-private ObservateurRepository observateurRepository;
+    @Autowired
+    private ObservateurRepository observateurRepository;
 
-@Autowired
-private LigueRepository ligueRepository;
+    @Autowired
+    private LigueRepository ligueRepository;
 
     @Autowired
     private EquipeRepository equipeRepository;
+
+    @Autowired
+    private JoueurRepository joueurRepository;
 
 
     public Gestionnaire signupGestionnaire (Gestionnaire gestionnaire){
@@ -81,6 +78,20 @@ private LigueRepository ligueRepository;
         if(ligue != null){
             List<Equipe> equipes = equipeRepository.findByLigue(ligue);
             return equipes;
+        }
+        return null;
+    }
+
+    public Joueur createJoueur (Joueur joueur){
+        joueurRepository.save(joueur);
+        return joueur;
+    }
+
+    public List<Joueur> findByEquipe (int idEquipe){
+        Equipe equipe = equipeRepository.findById(idEquipe);
+        if(equipe != null){
+            List<Joueur> joueurs = joueurRepository.findByEquipe(equipe);
+            return joueurs;
         }
         return null;
     }

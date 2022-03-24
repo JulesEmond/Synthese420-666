@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Equipe } from 'src/models/equipe';
+import { Ligue } from 'src/models/ligue';
 import { EquipeService } from 'src/services/equipe.service';
+import { LigueService } from 'src/services/ligue.service';
 
 @Component({
   selector: 'app-voir-equipe',
@@ -11,11 +13,27 @@ import { EquipeService } from 'src/services/equipe.service';
 export class VoirEquipeComponent implements OnInit {
   listEquipes: Array<Equipe>;
   validMessage: string = '';
+  id: number;
+  ligue: Ligue;
+  nomLigue: string = '';
 
-  constructor(private equipeService: EquipeService, private router: Router) {}
+  constructor(private equipeService: EquipeService, private ligueService: LigueService, private router: Router) {}
 
   ngOnInit(): void {
-      this.getAllEquipes();
+    sessionStorage.removeItem('Equipe')
+    this.id = parseInt(sessionStorage.getItem('Ligue'));
+    if(this.id == null){
+      this.router.navigate(['/accueil-gestionnaire']);
+    }
+    else {
+      this.ligueService.findById(this.id).subscribe(
+        (data) => {
+          this.ligue = data;
+          this.nomLigue = this.ligue.name;
+        }
+      )
+    }
+    this.getAllEquipes();
   }
 
   getAllEquipes(): void {
@@ -30,7 +48,8 @@ export class VoirEquipeComponent implements OnInit {
   }
 
   public infoJoueurs(equipeId : number) {
-    console.log(equipeId.toString());
+    sessionStorage.setItem('Equipe', equipeId.toString());
+    this.router.navigate(['/joueurs']);
   }
 
   public createEquipe() {

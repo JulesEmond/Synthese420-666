@@ -1,0 +1,24 @@
+<app-header></app-header>
+<div class="container-fluid">
+    <form [formGroup]="createJoueur" (ngSubmit)="onSubmit()">
+        <div *ngIf="validMessage != ''">
+            <h3 class="has-info">{{validMessage}}</h3>
+        </div>
+
+        <h1>Ajoutez un joueur ou joueuse</h1>
+        
+        <div class="form-group mt-2">
+            <label for="firstName">Son prénom</label>
+            <input class="form-control" id="firstName"  placeholder="Prénom" formControlName="firstName">
+        </div>
+        <div class="form-group mt-2">
+              <label for="lastName">Son nom de famille</label>
+              <input class="form-control" id="lastName" placeholder="Nom de famille" formControlName="lastName">
+        </div>
+        <div class="form-group mt-2">
+            <label for="age">Son âge actuel</label>
+            <input type="number" min="0" class="form-control" id="age" placeholder="Son âge" formControlName="age">
+        </div>
+        <button type="submit" class="btn btn-primary mt-4">Confirmez</button>
+      </form>
+    </div>
