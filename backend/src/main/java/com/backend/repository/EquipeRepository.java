@@ -11,4 +11,6 @@ import java.util.List;
 public interface EquipeRepository extends JpaRepository<Equipe, Integer> {
     Equipe findById(int id);
     List<Equipe> findByLigue(Ligue ligue);
+
+    Equipe deleteById (int id);
 }

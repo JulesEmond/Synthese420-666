@@ -36,4 +36,15 @@ export class VoirLigueComponent implements OnInit {
     this.router.navigate(['/mes-equipes']);
   }
 
+  public deleteLigue(ligueId: number) {
+    if (window.confirm("Êtes-vous certains?")) {
+      this.ligueService.deleteById(ligueId).subscribe(
+        (err) => {
+          console.log(err);
+        }
+      );
+      this.router.navigate(['/mes-ligues']).then(() => {window.location.reload();});
+    }
+  }
+
 }

@@ -1,10 +1,7 @@
 package com.backend.controller;
 
 import com.backend.model.*;
-import com.backend.repository.EquipeRepository;
-import com.backend.repository.GestionnaireRepository;
-import com.backend.repository.LigueRepository;
-import com.backend.repository.ObservateurRepository;
+import com.backend.repository.*;
 import com.backend.service.BackendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +26,9 @@ public class BackendController {
 
     @Autowired
     EquipeRepository equipeRepository;
+
+    @Autowired
+    JoueurRepository joueurRepository;
 
     @PostMapping("/backend/gestionnaire")
     public Gestionnaire signupGestionnaire(@RequestBody Gestionnaire gestionnaire) {
@@ -55,6 +55,16 @@ public class BackendController {
         return service.createLigue(ligue);
     }
 
+    @PostMapping("/backend/ligue/update")
+    public Ligue updateLigue(@RequestBody Ligue ligue) {
+        return service.updateLigue(ligue);
+    }
+
+    @DeleteMapping(value = "/backend/ligue/delete/{id}")
+    public void deleteLigue(@PathVariable("id") int id) {
+        service.deleteLigue(id);
+    }
+
     @GetMapping(value = "/backend/ligue/parent/{id}")
     public List<Ligue> findByGestionnaire(@PathVariable("id") int id){
         return service.findByGestionaire(id);
@@ -65,6 +75,16 @@ public class BackendController {
         return service.createEquipe(equipe);
     }
 
+    @PostMapping("/backend/equipe/update")
+    public Equipe updateEquipe(@RequestBody Equipe equipe) {
+        return service.updateEquipe(equipe);
+    }
+
+    @DeleteMapping(value = "/backend/equipe/delete/{id}")
+    public void deleteEquipe(@PathVariable("id") int id) {
+        service.deleteEquipe(id);
+    }
+
     @GetMapping(value = "/backend/equipe/parent/{id}")
     public List<Equipe> findByLigue(@PathVariable("id") int id){
         return service.findByLigue(id);
@@ -73,6 +93,16 @@ public class BackendController {
     @PostMapping("/backend/joueur")
     public Joueur createjoueur(@RequestBody Joueur joueur) {
         return service.createJoueur(joueur);
+    }
+
+    @PostMapping("/backend/joueur/update")
+    public Joueur updatejoueur(@RequestBody Joueur joueur) {
+        return service.updateJoueur(joueur);
+    }
+
+    @DeleteMapping("/backend/joueur/delete/{id}")
+    public Joueur deletejoueur(@PathVariable("id") int id) {
+        return joueurRepository.deleteById(id);
     }
 
     @GetMapping(value = "/backend/joueur/parent/{id}")

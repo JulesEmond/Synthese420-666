@@ -11,7 +11,7 @@
         <th scope="col">Adresse</th>
         <th scope="col">Description</th>
         <th scope="col">Sport</th>
-        <th width="200px">Actions</th>
+        <th width="400px">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -21,7 +21,8 @@
             <td>{{item.description}}</td>
             <td>{{item.sport}}</td>
             <td>
-                <button type="button" (click)="infoEquipes(item.id)" class="btn btn-primary mr-2">Voir les équipes</button>
+                <button type="button" (click)="infoEquipes(item.id)" class="btn btn-primary mx-2">Voir les équipes</button>
+                <button type="button" (click)="deleteLigue(item.id)" class="btn btn-danger mx-2">Supprimer</button>
             </td>
         </tr>
     </tbody>

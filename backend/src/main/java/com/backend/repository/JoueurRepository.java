@@ -9,4 +9,5 @@ import java.util.List;
 public interface JoueurRepository extends JpaRepository<Joueur, Integer> {
     Joueur findById(int id);
     List<Joueur> findByEquipe(Equipe equipe);
+    Joueur deleteById (int id);
 }

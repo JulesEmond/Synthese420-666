@@ -5,13 +5,14 @@
         <h3 class="has-info">{{validMessage}}</h3>
     </div>
     <button type="button" (click)="createJoueur()" class="btn btn-lg btn-success my-4">Ajoutez un joueur</button>
+    <button type="button" (click)="retourEquipe()" class="btn btn-lg btn-primary mx-4">Retouner aux équipes</button>
 <table class="table">
     <thead class="thead-dark">
         <tr>
         <th scope="col">Prénom</th>
         <th scope="col">Nom</th>
         <th scope="col">Âge</th>
-        <th width="200px">Actions</th>
+        <th width="400px">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -20,7 +21,7 @@
             <td>{{item.lastName}}</td>
             <td>{{item.age}}</td>
             <td>
-                <button type="button" class="btn btn-primary mr-2">Plus d'options</button>
+                <button type="button" (click)="deleteJoueur(item.id)" class="btn btn-danger mx-2">Supprimer</button>
             </td>
         </tr>
     </tbody>

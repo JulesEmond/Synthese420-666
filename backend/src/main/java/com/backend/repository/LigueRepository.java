@@ -12,4 +12,5 @@ public interface LigueRepository extends JpaRepository<Ligue, Integer> {
     Ligue findById(int id);
     List<Ligue> findByGestionnaire(Gestionnaire gestionnaire);
     List<Ligue> findBySport(String sport);
+    Ligue deleteById (int id);
 }

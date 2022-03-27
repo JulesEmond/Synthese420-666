@@ -24,12 +24,12 @@ export class BasicCrud <T, ID> {
     return this.http.get<T[]>(this.url + '/parent/' + id);
   }
 
-  update(id: ID, t: T): Observable<T> {
-    return this.http.put<T>(this.url + '/' + id, t, {});
+  update(t: T): Observable<T> {
+    return this.http.put<T>(this.url + '/update', t);
   }
 
   deleteById(id: ID): Observable<T> {
-    return this.http.delete<T>(this.url + '/' + id);
+    return this.http.delete<T>(this.url + '/delete/' + id);
   }
 
   login(username:string, password:string) : Observable<T>{

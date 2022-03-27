@@ -59,6 +59,26 @@ public class BackendService {
         return ligue;
     }
 
+    public Ligue updateLigue (Ligue ligue){
+        if (ligueRepository.existsById(ligue.getId())) {
+            ligueRepository.save(ligue);
+            return ligue;
+        }
+        return null;
+    }
+
+    public void deleteLigue(int ligueId){
+        Ligue ligue = ligueRepository.findById(ligueId);
+        ligue.setGestionnaire(null);
+        ligueRepository.save(ligue);
+        List<Equipe> equipes = findByLigue(ligueId);
+        while (equipes.size() != 0){
+            deleteEquipe(equipes.get(0).getId());
+            equipes.remove(0);
+        }
+        ligueRepository.delete(ligue);
+    }
+
     public List<Ligue> findByGestionaire (int idGestionnaire){
         Gestionnaire gestionnaire = gestionnaireRepository.findById(idGestionnaire);
         if(gestionnaire != null){
@@ -73,6 +93,26 @@ public class BackendService {
         return equipe;
     }
 
+    public Equipe updateEquipe (Equipe equipe){
+        if (equipeRepository.existsById(equipe.getId())){
+            equipeRepository.save(equipe);
+            return equipe;
+        }
+        return null;
+    }
+
+    public void deleteEquipe(int equipeId){
+        Equipe equipe = equipeRepository.findById(equipeId);
+        equipe.setLigue(null);
+        equipeRepository.save(equipe);
+        List<Joueur> joueurs = findByEquipe(equipeId);
+        while (joueurs.size() != 0){
+            joueurRepository.deleteById(joueurs.get(0).getId());
+            joueurs.remove(0);
+        }
+        equipeRepository.delete(equipe);
+    }
+
     public List<Equipe> findByLigue (int idLigue){
         Ligue ligue = ligueRepository.findById(idLigue);
         if(ligue != null){
@@ -85,6 +125,14 @@ public class BackendService {
     public Joueur createJoueur (Joueur joueur){
         joueurRepository.save(joueur);
         return joueur;
+    }
+
+    public Joueur updateJoueur (Joueur joueur){
+        if (joueurRepository.existsById(joueur.getId())){
+            joueurRepository.save(joueur);
+            return joueur;
+        }
+        return null;
     }
 
     public List<Joueur> findByEquipe (int idEquipe){

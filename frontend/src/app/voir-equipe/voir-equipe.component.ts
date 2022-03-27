@@ -55,4 +55,15 @@ export class VoirEquipeComponent implements OnInit {
   public createEquipe() {
     this.router.navigate(['/creer-equipes']);
   }
+
+  public deleteEquipe(equipeId: number) {
+    if (window.confirm("Êtes-vous certains?")) {
+      this.equipeService.deleteById(equipeId).subscribe(
+        (err) => {
+          console.log(err);
+        }
+      );
+      this.router.navigate(['/mes-equipes']).then(() => {window.location.reload();});
+    }
+  }
 }

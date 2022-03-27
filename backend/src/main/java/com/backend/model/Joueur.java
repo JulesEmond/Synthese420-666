@@ -2,6 +2,8 @@ package com.backend.model;
 
 
 import lombok.Data;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -17,6 +19,6 @@ public class Joueur implements Serializable {
     private String lastName;
     private int age;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     private Equipe equipe;
 }

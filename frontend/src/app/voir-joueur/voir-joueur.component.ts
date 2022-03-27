@@ -49,4 +49,19 @@ export class VoirJoueurComponent implements OnInit {
   public createJoueur() {
     this.router.navigate(['/ajout-joueurs']);
   }
+
+  public retourEquipe() {
+    this.router.navigate(['/mes-equipes']);
+  }
+
+  public deleteJoueur(joueurId: number) {
+    if (window.confirm("Êtes-vous certains?")) {
+      this.joueurService.deleteById(joueurId).subscribe(
+        (err) => {
+          console.log(err);
+        }
+      );
+      this.router.navigate(['/joueurs']).then(() => {window.location.reload();});
+    }
+  }
 }
