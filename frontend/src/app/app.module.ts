@@ -18,6 +18,9 @@ import { CreerEquipeComponent } from './creer-equipe/creer-equipe.component';
 import { VoirEquipeComponent } from './voir-equipe/voir-equipe.component';
 import { CreerJoueurComponent } from './creer-joueur/creer-joueur.component';
 import { VoirJoueurComponent } from './voir-joueur/voir-joueur.component';
+import { UpdateLigueComponent } from './update-ligue/update-ligue.component';
+import { UpdateEquipeComponent } from './update-equipe/update-equipe.component';
+import { UpdateJoueurComponent } from './update-joueur/update-joueur.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { VoirJoueurComponent } from './voir-joueur/voir-joueur.component';
     CreerEquipeComponent,
     VoirEquipeComponent,
     CreerJoueurComponent,
-    VoirJoueurComponent
+    VoirJoueurComponent,
+    UpdateLigueComponent,
+    UpdateEquipeComponent,
+    UpdateJoueurComponent
   ],
   imports: [
     BrowserModule,

@@ -36,6 +36,11 @@ export class VoirLigueComponent implements OnInit {
     this.router.navigate(['/mes-equipes']);
   }
 
+  public updateLigue(ligueId : number) {
+    sessionStorage.setItem('Ligue', ligueId.toString());
+    this.router.navigate(['/update-ligues']);
+  }
+
   public deleteLigue(ligueId: number) {
     if (window.confirm("Êtes-vous certains?")) {
       this.ligueService.deleteById(ligueId).subscribe(

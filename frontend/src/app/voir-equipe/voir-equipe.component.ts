@@ -56,6 +56,11 @@ export class VoirEquipeComponent implements OnInit {
     this.router.navigate(['/creer-equipes']);
   }
 
+  public updateEquipe(equipeId) {
+    sessionStorage.setItem('Equipe', equipeId.toString());
+    this.router.navigate(['/update-equipes']);
+  }
+
   public deleteEquipe(equipeId: number) {
     if (window.confirm("Êtes-vous certains?")) {
       this.equipeService.deleteById(equipeId).subscribe(

@@ -20,6 +20,7 @@ export class VoirJoueurComponent implements OnInit {
   constructor(private joueurService: JoueurService, private equipeService: EquipeService, private router: Router) {}
 
   ngOnInit(): void {
+    sessionStorage.removeItem('Joueur');
     this.id = parseInt(sessionStorage.getItem('Equipe'));
     if(this.id == null){
       this.router.navigate(['/accueil-gestionnaire']);
@@ -48,6 +49,11 @@ export class VoirJoueurComponent implements OnInit {
 
   public createJoueur() {
     this.router.navigate(['/ajout-joueurs']);
+  }
+
+  public updateJoueur(joueurId) {
+    sessionStorage.setItem('Joueur', joueurId.toString());
+    this.router.navigate(['/update-joueurs']);
   }
 
   public retourEquipe() {

@@ -129,4 +129,9 @@ public class BackendController {
     public Equipe findEquipe(@PathVariable("id") int id) {
         return equipeRepository.findById(id);
     }
+
+    @GetMapping(value = "/backend/joueur/{id}")
+    public Joueur findJoueur(@PathVariable("id") int id) {
+        return joueurRepository.findById(id);
+    }
 }

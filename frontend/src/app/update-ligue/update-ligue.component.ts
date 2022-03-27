@@ -7,53 +7,53 @@ import { GestionnaireService } from 'src/services/gestionnaire.service';
 import { LigueService } from 'src/services/ligue.service';
 
 @Component({
-  selector: 'app-creer-ligue',
-  templateUrl: './creer-ligue.component.html',
-  styleUrls: ['./creer-ligue.component.css']
+  selector: 'app-update-ligue',
+  templateUrl: './update-ligue.component.html',
+  styleUrls: ['./update-ligue.component.css']
 })
-export class CreerLigueComponent implements OnInit {
+export class UpdateLigueComponent implements OnInit {
 
   validMessage:string;
   ligue: Ligue
   id: number
-  gestionnaire: Gestionnaire
+  ligueInit: Ligue
 
-  createLigue = new FormGroup({
+  updateLigue = new FormGroup({
     name : new FormControl('', Validators.required),
     address : new FormControl('', Validators.required),
     description : new FormControl('', Validators.required),
     sport : new FormControl('', Validators.required)
   });
 
-  constructor(private ligueService: LigueService, private gestionnaireService: GestionnaireService,  private router : Router) { }
+  constructor(private ligueService: LigueService, private router : Router) { }
 
   ngOnInit(): void {
-    sessionStorage.removeItem('Ligue')
-    this.id = parseInt(sessionStorage.getItem('User'));
+    this.id = parseInt(sessionStorage.getItem('Ligue'));
     if(this.id == null){
-      this.router.navigate(['/accueil-gestionnaire']);
+      this.router.navigate(['/mes-ligues']);
     }
     else {
-      this.gestionnaireService.findById(this.id).subscribe(
+      this.ligueService.findById(this.id).subscribe(
         (data) => {
-          this.gestionnaire = data;
+          this.ligueInit = data;
         }
       )
     }
   }
 
   onSubmit(){
-    this.ligue = this.createLigue.value
-    this.ligue.gestionnaire = this.gestionnaire
-    if(this.createLigue.valid){
-      this.ligueService.save(this.ligue).subscribe(
+    this.ligue = this.updateLigue.value
+    this.ligue.gestionnaire = this.ligueInit.gestionnaire
+    this.ligue.id = this.ligueInit.id
+    if(this.updateLigue.valid){
+      this.ligueService.update(this.ligue).subscribe(
         (data) => {
           this.ligue = data;
           if (this.ligue != null){
-            this.createLigue.reset();
+            this.updateLigue.reset();
             this.router.navigate(['/mes-ligues']);
           } else {
-            this.validMessage = "Erreur lors de la création de la ligue";
+            this.validMessage = "Erreur lors de la modification de la ligue";
           }
         },
         (err) => {
@@ -65,4 +65,5 @@ export class CreerLigueComponent implements OnInit {
       this.validMessage = 'Veuillez remplir le formulaire avant de le soumettre!';
     }
   }
+
 }

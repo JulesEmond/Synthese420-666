@@ -25,7 +25,7 @@ export class BasicCrud <T, ID> {
   }
 
   update(t: T): Observable<T> {
-    return this.http.put<T>(this.url + '/update', t);
+    return this.http.post<T>(this.url + '/update', t);
   }
 
   deleteById(id: ID): Observable<T> {

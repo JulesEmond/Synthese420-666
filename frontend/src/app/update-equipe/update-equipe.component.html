@@ -1,0 +1,32 @@
+<app-header></app-header>
+<div class="container-fluid">
+    <form [formGroup]="updateEquipe" (ngSubmit)="onSubmit()">
+        <div *ngIf="validMessage != ''">
+            <h3 class="has-info">{{validMessage}}</h3>
+        </div>
+
+        <h1>Modifiez une équipe</h1>
+        
+        <div class="form-group mt-2">
+            <label for="name">Nom de votre équipe</label>
+            <input class="form-control" id="name"  placeholder="{{equipeInit.name}}" formControlName="name">
+        </div>
+        <div class="form-group mt-2">
+              <label for="homeStadium">Le nom de votre domicile (aréna, stade, etc.)</label>
+              <input class="form-control" id="homeStadium" placeholder="{{equipeInit.homeStadium}}" formControlName="homeStadium">
+        </div>
+        <div class="form-group mt-2">
+            <label for="manager">Prénom et Nom de votre directeur</label>
+            <input class="form-control" id="manager" placeholder="{{equipeInit.manager}}" formControlName="manager">
+        </div>
+        <div class="form-group mt-2">
+            <label for="coach">Prénom et Nom de votre entraîneur</label>
+            <input class="form-control" id="coach" placeholder="{{equipeInit.coach}}" formControlName="coach">
+        </div>
+        <div class="form-group mt-2">
+            <label for="assistantCoach">Prénom et Nom de votre entraîneur-adjoint</label>
+            <input class="form-control" id="assistantCoach" placeholder="{{equipeInit.assistantCoach}}" formControlName="assistantCoach">
+        </div>
+        <button type="submit" class="btn btn-primary mt-4">Confirmez</button>
+      </form>
+    </div>
