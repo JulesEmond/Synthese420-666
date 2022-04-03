@@ -79,11 +79,10 @@ public class BackendService {
         ligueRepository.delete(ligue);
     }
 
-    public List<Ligue> findByGestionaire (int idGestionnaire){
+    public List<Ligue> findByGestionaire (int idGestionnaire, String privacy){
         Gestionnaire gestionnaire = gestionnaireRepository.findById(idGestionnaire);
         if(gestionnaire != null){
-            List<Ligue> ligues = ligueRepository.findByGestionnaire(gestionnaire);
-            return ligues;
+            return ligueRepository.findByGestionnaireAndPrivacy(gestionnaire, privacy);
         }
         return null;
     }

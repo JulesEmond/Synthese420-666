@@ -16,6 +16,7 @@ public class Ligue implements Serializable {
     private String address;
     private String description;
     private String sport;
+    private String privacy;
 
     @ManyToOne
     private Gestionnaire gestionnaire;

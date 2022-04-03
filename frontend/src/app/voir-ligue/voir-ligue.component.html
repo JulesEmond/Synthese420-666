@@ -4,6 +4,8 @@
     <div *ngIf="validMessage != ''">
         <h3 class="has-info">{{validMessage}}</h3>
     </div>
+
+<h3>Ligues publiques</h3>
 <table class="table">
     <thead class="thead-dark">
         <tr>
@@ -11,11 +13,11 @@
         <th scope="col">Adresse</th>
         <th scope="col">Description</th>
         <th scope="col">Sport</th>
-        <th width="400px">Actions</th>
+        <th width="500px">Actions</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let item of listLigues; let i = index">
+        <tr *ngFor="let item of liguesPublic; let i = index">
             <td>{{item.name}}</td>
             <td>{{item.address}}</td>
             <td>{{item.description}}</td>
@@ -24,6 +26,33 @@
                 <button type="button" (click)="infoEquipes(item.id)" class="btn btn-primary mx-2">Voir les équipes</button>
                 <button type="button" (click)="updateLigue(item.id)" class="btn btn-success mx-2">Modifier</button>
                 <button type="button" (click)="deleteLigue(item.id)" class="btn btn-danger mx-2">Supprimer</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Ligues privées</h3>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+        <th scope="col">Nom</th>
+        <th scope="col">Adresse</th>
+        <th scope="col">Description</th>
+        <th scope="col">Sport</th>
+        <th width="500px">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of liguesPrive; let i = index">
+            <td>{{item.name}}</td>
+            <td>{{item.address}}</td>
+            <td>{{item.description}}</td>
+            <td>{{item.sport}}</td>
+            <td>
+                <button type="button" (click)="infoEquipes(item.id)" class="btn btn-primary mx-2">Voir les équipes</button>
+                <button type="button" (click)="updateLigue(item.id)" class="btn btn-success mx-2">Modifier</button>
+                <button type="button" (click)="deleteLigue(item.id)" class="btn btn-danger mx-2">Supprimer</button>
+                <button type="button" class="btn btn-warning mx-2">Inviter</button>
             </td>
         </tr>
     </tbody>

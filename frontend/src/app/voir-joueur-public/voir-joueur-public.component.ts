@@ -6,11 +6,11 @@ import { EquipeService } from 'src/services/equipe.service';
 import { JoueurService } from 'src/services/joueur.service';
 
 @Component({
-  selector: 'app-voir-joueur',
-  templateUrl: './voir-joueur.component.html',
-  styleUrls: ['./voir-joueur.component.css']
+  selector: 'app-voir-joueur-public',
+  templateUrl: './voir-joueur-public.component.html',
+  styleUrls: ['./voir-joueur-public.component.css']
 })
-export class VoirJoueurComponent implements OnInit {
+export class VoirJoueurPublicComponent implements OnInit {
   listJoueurs: Array<Joueur>;
   validMessage: string = '';
   id:number;
@@ -23,7 +23,7 @@ export class VoirJoueurComponent implements OnInit {
     sessionStorage.removeItem('Joueur');
     this.id = parseInt(sessionStorage.getItem('Equipe'));
     if(sessionStorage.getItem('Equipe') == null){
-      this.router.navigate(['/accueil-gestionnaire']);
+      this.router.navigate(['/accueil-observateur']);
     }
     else {
       this.equipeService.findById(this.id).subscribe(
@@ -47,27 +47,7 @@ export class VoirJoueurComponent implements OnInit {
     );
   }
 
-  public createJoueur() {
-    this.router.navigate(['/ajout-joueurs']);
-  }
-
-  public updateJoueur(joueurId) {
-    sessionStorage.setItem('Joueur', joueurId.toString());
-    this.router.navigate(['/update-joueurs']);
-  }
-
   public retourEquipe() {
-    this.router.navigate(['/mes-equipes']);
-  }
-
-  public deleteJoueur(joueurId: number) {
-    if (window.confirm("Êtes-vous certains?")) {
-      this.joueurService.deleteById(joueurId).subscribe(
-        (err) => {
-          console.log(err);
-        }
-      );
-      this.router.navigate(['/joueurs']).then(() => {window.location.reload();});
-    }
+    this.router.navigate(['/equipes-publiques']);
   }
 }

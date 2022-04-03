@@ -1,0 +1,31 @@
+<app-header2></app-header2>
+<div class="container py-5">
+    <h1>Liste des équipes de {{nomLigue}}</h1>
+    <div *ngIf="validMessage != ''">
+        <h3 class="has-info">{{validMessage}}</h3>
+    </div>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+        <th scope="col">Nom</th>
+        <th scope="col">Stade</th>
+        <th scope="col">Directeur</th>
+        <th scope="col">Entraîneur</th>
+        <th scope="col">Adjoint</th>
+        <th width="300px">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of listEquipes; let i = index">
+            <td>{{item.name}}</td>
+            <td>{{item.homeStadium}}</td>
+            <td>{{item.manager}}</td>
+            <td>{{item.coach}}</td>
+            <td>{{item.assistantCoach}}</td>
+            <td>
+                <button type="button" (click)="infoJoueurs(item.id)" class="btn btn-primary mx-2">Voir les joueurs/joueuses</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>

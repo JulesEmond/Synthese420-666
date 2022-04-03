@@ -22,7 +22,8 @@ export class CreerLigueComponent implements OnInit {
     name : new FormControl('', Validators.required),
     address : new FormControl('', Validators.required),
     description : new FormControl('', Validators.required),
-    sport : new FormControl('', Validators.required)
+    sport : new FormControl('', Validators.required),
+    privacy : new FormControl('', Validators.required)
   });
 
   constructor(private ligueService: LigueService, private gestionnaireService: GestionnaireService,  private router : Router) { }

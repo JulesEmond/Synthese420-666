@@ -10,7 +10,8 @@ import { LigueService } from 'src/services/ligue.service';
 })
 export class VoirLigueComponent implements OnInit {
 
-  listLigues: Array<Ligue>;
+  liguesPublic: Array<Ligue>;
+  liguesPrive: Array<Ligue>;
   validMessage: string = '';
 
   constructor(private ligueService: LigueService, private router: Router) {}
@@ -21,9 +22,18 @@ export class VoirLigueComponent implements OnInit {
   }
 
   getAllLigues(): void {
-    this.ligueService.findByParent(parseInt(sessionStorage.getItem('User'))).subscribe(
+    this.ligueService.findByParentAndPrivacy(parseInt(sessionStorage.getItem('User')), "public").subscribe(
       (data) => {
-        this.listLigues = data;
+        this.liguesPublic = data;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+
+    this.ligueService.findByParentAndPrivacy(parseInt(sessionStorage.getItem('User')), "private").subscribe(
+      (data) => {
+        this.liguesPrive = data;
       },
       (err) => {
         console.log(err);

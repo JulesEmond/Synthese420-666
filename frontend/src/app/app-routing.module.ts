@@ -11,8 +11,11 @@ import { SignUpObservateurComponent } from './sign-up-observateur/sign-up-observ
 import { UpdateEquipeComponent } from './update-equipe/update-equipe.component';
 import { UpdateJoueurComponent } from './update-joueur/update-joueur.component';
 import { UpdateLigueComponent } from './update-ligue/update-ligue.component';
+import { VoirEquipePublicComponent } from './voir-equipe-public/voir-equipe-public.component';
 import { VoirEquipeComponent } from './voir-equipe/voir-equipe.component';
+import { VoirJoueurPublicComponent } from './voir-joueur-public/voir-joueur-public.component';
 import { VoirJoueurComponent } from './voir-joueur/voir-joueur.component';
+import { VoirLiguePublicComponent } from './voir-ligue-public/voir-ligue-public.component';
 import { VoirLigueComponent } from './voir-ligue/voir-ligue.component';
 
 const routes: Routes = [
@@ -24,12 +27,15 @@ const routes: Routes = [
   {path: 'update-ligues', component:UpdateLigueComponent},
   {path: 'creer-ligues', component:CreerLigueComponent},
   {path: 'mes-ligues', component:VoirLigueComponent},
+  {path: 'ligues-publiques', component:VoirLiguePublicComponent},
   {path: 'creer-equipes', component:CreerEquipeComponent},
   {path: 'update-equipes', component:UpdateEquipeComponent},
   {path: 'mes-equipes', component:VoirEquipeComponent},
+  {path: 'equipes-publiques', component:VoirEquipePublicComponent},
   {path: 'ajout-joueurs', component:CreerJoueurComponent},
   {path: 'update-joueurs', component:UpdateJoueurComponent},
   {path: 'joueurs', component:VoirJoueurComponent},
+  {path: 'joueurs-publiques', component:VoirJoueurPublicComponent},
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: '**', redirectTo: 'login'}
 ];

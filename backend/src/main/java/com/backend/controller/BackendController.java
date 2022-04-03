@@ -65,9 +65,14 @@ public class BackendController {
         service.deleteLigue(id);
     }
 
-    @GetMapping(value = "/backend/ligue/parent/{id}")
-    public List<Ligue> findByGestionnaire(@PathVariable("id") int id){
-        return service.findByGestionaire(id);
+    @GetMapping(value = "/backend/ligue/parent/{id}/{privacy}")
+    public List<Ligue> findByGestionnaireAndPrivacy(@PathVariable("id") int id, @PathVariable("privacy") String privacy) {
+        return service.findByGestionaire(id, privacy);
+    }
+
+    @GetMapping(value = "/backend/ligue/public")
+    public List<Ligue> findPublicLigue(){
+        return ligueRepository.findByPrivacy("public");
     }
 
     @PostMapping("/backend/equipe")

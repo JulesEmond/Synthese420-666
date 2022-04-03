@@ -24,6 +24,14 @@ export class BasicCrud <T, ID> {
     return this.http.get<T[]>(this.url + '/parent/' + id);
   }
 
+  findAllPublic(): Observable<T[]> {
+    return this.http.get<T[]>(this.url + '/public');
+  }
+
+  findByParentAndPrivacy(id: ID, privacy:string): Observable<T[]> {
+    return this.http.get<T[]>(this.url + '/parent/' + id +'/' + privacy);
+  }
+
   update(t: T): Observable<T> {
     return this.http.post<T>(this.url + '/update', t);
   }

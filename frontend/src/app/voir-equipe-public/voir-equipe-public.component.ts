@@ -6,11 +6,11 @@ import { EquipeService } from 'src/services/equipe.service';
 import { LigueService } from 'src/services/ligue.service';
 
 @Component({
-  selector: 'app-voir-equipe',
-  templateUrl: './voir-equipe.component.html',
-  styleUrls: ['./voir-equipe.component.css']
+  selector: 'app-voir-equipe-public',
+  templateUrl: './voir-equipe-public.component.html',
+  styleUrls: ['./voir-equipe-public.component.css']
 })
-export class VoirEquipeComponent implements OnInit {
+export class VoirEquipePublicComponent implements OnInit {
   listEquipes: Array<Equipe>;
   validMessage: string = '';
   id: number;
@@ -23,7 +23,7 @@ export class VoirEquipeComponent implements OnInit {
     sessionStorage.removeItem('Equipe')
     this.id = parseInt(sessionStorage.getItem('Ligue'));
     if(sessionStorage.getItem('Ligue') == null){
-      this.router.navigate(['/accueil-gestionnaire']);
+      this.router.navigate(['/accueil-observateur']);
     }
     else {
       this.ligueService.findById(this.id).subscribe(
@@ -49,26 +49,6 @@ export class VoirEquipeComponent implements OnInit {
 
   public infoJoueurs(equipeId : number) {
     sessionStorage.setItem('Equipe', equipeId.toString());
-    this.router.navigate(['/joueurs']);
-  }
-
-  public createEquipe() {
-    this.router.navigate(['/creer-equipes']);
-  }
-
-  public updateEquipe(equipeId) {
-    sessionStorage.setItem('Equipe', equipeId.toString());
-    this.router.navigate(['/update-equipes']);
-  }
-
-  public deleteEquipe(equipeId: number) {
-    if (window.confirm("Êtes-vous certains?")) {
-      this.equipeService.deleteById(equipeId).subscribe(
-        (err) => {
-          console.log(err);
-        }
-      );
-      this.router.navigate(['/mes-equipes']).then(() => {window.location.reload();});
-    }
+    this.router.navigate(['/joueurs-publiques']);
   }
 }

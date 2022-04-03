@@ -6,6 +6,7 @@ export class Ligue{
     address: string;
     description: string;
     sport: string;
+    privacy: string;
     
     gestionnaire: Gestionnaire;
 }
