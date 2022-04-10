@@ -48,6 +48,6 @@ export class VoirJoueurPublicComponent implements OnInit {
   }
 
   public retourEquipe() {
-    this.router.navigate(['/equipes-publiques']);
+    this.router.navigate(['/equipes-observateur']);
   }
 }

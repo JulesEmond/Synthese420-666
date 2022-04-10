@@ -5,6 +5,7 @@ import { AccueilObservateurComponent } from './accueil-observateur/accueil-obser
 import { CreerEquipeComponent } from './creer-equipe/creer-equipe.component';
 import { CreerJoueurComponent } from './creer-joueur/creer-joueur.component';
 import { CreerLigueComponent } from './creer-ligue/creer-ligue.component';
+import { InviteObservateurComponent } from './invite-observateur/invite-observateur.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpGestionnaireComponent } from './sign-up-gestionnaire/sign-up-gestionnaire.component';
 import { SignUpObservateurComponent } from './sign-up-observateur/sign-up-observateur.component';
@@ -15,6 +16,7 @@ import { VoirEquipePublicComponent } from './voir-equipe-public/voir-equipe-publ
 import { VoirEquipeComponent } from './voir-equipe/voir-equipe.component';
 import { VoirJoueurPublicComponent } from './voir-joueur-public/voir-joueur-public.component';
 import { VoirJoueurComponent } from './voir-joueur/voir-joueur.component';
+import { VoirLiguePriveComponent } from './voir-ligue-prive/voir-ligue-prive.component';
 import { VoirLiguePublicComponent } from './voir-ligue-public/voir-ligue-public.component';
 import { VoirLigueComponent } from './voir-ligue/voir-ligue.component';
 
@@ -28,14 +30,16 @@ const routes: Routes = [
   {path: 'creer-ligues', component:CreerLigueComponent},
   {path: 'mes-ligues', component:VoirLigueComponent},
   {path: 'ligues-publiques', component:VoirLiguePublicComponent},
+  {path: 'ligues-privees', component:VoirLiguePriveComponent},
   {path: 'creer-equipes', component:CreerEquipeComponent},
   {path: 'update-equipes', component:UpdateEquipeComponent},
   {path: 'mes-equipes', component:VoirEquipeComponent},
-  {path: 'equipes-publiques', component:VoirEquipePublicComponent},
+  {path: 'equipes-observateur', component:VoirEquipePublicComponent},
   {path: 'ajout-joueurs', component:CreerJoueurComponent},
   {path: 'update-joueurs', component:UpdateJoueurComponent},
   {path: 'joueurs', component:VoirJoueurComponent},
-  {path: 'joueurs-publiques', component:VoirJoueurPublicComponent},
+  {path: 'joueurs-observateur', component:VoirJoueurPublicComponent},
+  {path: 'invitation', component:InviteObservateurComponent},
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: '**', redirectTo: 'login'}
 ];

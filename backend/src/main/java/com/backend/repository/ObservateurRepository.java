@@ -8,5 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface ObservateurRepository extends JpaRepository<Observateur, Integer> {
     Observateur findById(int id);
     Observateur findByUsernameAndPassword(String username, String password);
+    Observateur findByUsername(String username);
     boolean existsByUsername(String username);
 }

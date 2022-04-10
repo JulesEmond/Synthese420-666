@@ -5,26 +5,26 @@
         <h3 class="has-info">{{validMessage}}</h3>
     </div>
 
-<table class="table">
-    <thead class="thead-dark">
-        <tr>
-        <th scope="col">Nom</th>
-        <th scope="col">Adresse</th>
-        <th scope="col">Description</th>
-        <th scope="col">Sport</th>
-        <th width="200px">Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let item of liguesPublic; let i = index">
-            <td>{{item.name}}</td>
-            <td>{{item.address}}</td>
-            <td>{{item.description}}</td>
-            <td>{{item.sport}}</td>
-            <td>
-                <button type="button" (click)="infoEquipes(item.id)" class="btn btn-primary mx-2">Voir les équipes</button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Adresse</th>
+            <th scope="col">Description</th>
+            <th scope="col">Sport</th>
+            <th width="200px">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of liguesPublic; let i = index">
+                <td>{{item.name}}</td>
+                <td>{{item.address}}</td>
+                <td>{{item.description}}</td>
+                <td>{{item.sport}}</td>
+                <td>
+                    <button type="button" (click)="infoEquipes(item.id)" class="btn btn-primary mx-2">Voir les équipes</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

@@ -43,4 +43,12 @@ export class BasicCrud <T, ID> {
   login(username:string, password:string) : Observable<T>{
     return this.http.get<T>(this.url + '/' + username + '/' + password);
   }
+
+  invite(username:string, id:ID): Observable<T>{
+    return this.http.get<T>(this.url + '/invite/' + username + '/' + id);
+  }
+
+  findPrive(id:ID): Observable<T[]> {
+    return this.http.get<T[]>(this.url + '/prive/' + id);
+  }
 }

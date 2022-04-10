@@ -49,6 +49,6 @@ export class VoirEquipePublicComponent implements OnInit {
 
   public infoJoueurs(equipeId : number) {
     sessionStorage.setItem('Equipe', equipeId.toString());
-    this.router.navigate(['/joueurs-publiques']);
+    this.router.navigate(['/joueurs-observateur']);
   }
 }

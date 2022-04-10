@@ -24,6 +24,8 @@ import { UpdateJoueurComponent } from './update-joueur/update-joueur.component';
 import { VoirLiguePublicComponent } from './voir-ligue-public/voir-ligue-public.component';
 import { VoirEquipePublicComponent } from './voir-equipe-public/voir-equipe-public.component';
 import { VoirJoueurPublicComponent } from './voir-joueur-public/voir-joueur-public.component';
+import { InviteObservateurComponent } from './invite-observateur/invite-observateur.component';
+import { VoirLiguePriveComponent } from './voir-ligue-prive/voir-ligue-prive.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { VoirJoueurPublicComponent } from './voir-joueur-public/voir-joueur-publ
     UpdateJoueurComponent,
     VoirLiguePublicComponent,
     VoirEquipePublicComponent,
-    VoirJoueurPublicComponent
+    VoirJoueurPublicComponent,
+    InviteObservateurComponent,
+    VoirLiguePriveComponent
   ],
   imports: [
     BrowserModule,

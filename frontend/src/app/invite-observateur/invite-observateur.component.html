@@ -1,0 +1,17 @@
+<app-header></app-header>
+<div class="container-fluid">
+    <h1>Invitez des observateurs pour leur permettre de voir votre ligue</h1>
+    <form [formGroup]="inviteForm" (ngSubmit)="onSubmit()">
+        <br>
+        <div *ngIf="validMessage != ''">
+            <h3 class="has-info">{{validMessage}}</h3>
+        </div>
+
+        <div class="form-group mt-4">
+            <label for="username">Nom d'utilisateur de l'observateur</label>
+            <input class="form-control" id="username"  placeholder="Nom d'utilisateur" formControlName="username">
+            </div>
+        
+        <button type="submit" class="btn btn-primary mt-4">Invitez-le</button>
+    </form>
+</div>

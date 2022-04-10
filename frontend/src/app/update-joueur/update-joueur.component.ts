@@ -49,7 +49,7 @@ export class UpdateJoueurComponent implements OnInit {
             this.updateJoueur.reset();
             this.router.navigate(['/joueurs']);
           } else {
-            this.validMessage = "Erreur lors de l'ajout du joueur'";
+            this.validMessage = "Erreur lors de l'ajout du joueur";
           }
         },
         (err) => {

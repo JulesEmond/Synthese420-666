@@ -5,6 +5,7 @@ import com.backend.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -25,6 +26,8 @@ public class BackendService {
     @Autowired
     private JoueurRepository joueurRepository;
 
+    @Autowired
+    private ObserveLigueRepository observeLigueRepository;
 
     public Gestionnaire signupGestionnaire (Gestionnaire gestionnaire){
         if (!gestionnaireRepository.existsByUsername(gestionnaire.getUsername())
@@ -143,4 +146,34 @@ public class BackendService {
         return null;
     }
 
+    public Observateur inviteLigue (String username, int ligueId){
+        Observateur observateur = observateurRepository.findByUsername(username);
+        Ligue ligue = ligueRepository.findById(ligueId);
+        if(observateur != null && ligue != null){
+            ObserveLigue invitation = new ObserveLigue();
+            invitation.setObservateur(observateur);
+            invitation.setLigue(ligue);
+            if (!observeLigueRepository.existsByObservateurAndLigue(observateur, ligue)){
+                observeLigueRepository.save(invitation);
+                return observateur;
+            }
+        }
+        return null;
+    }
+
+    public List<Ligue> findLiguePrive (int id){
+        Observateur observateur = observateurRepository.findById(id);
+        if (observateur != null){
+            List<ObserveLigue> observeLigues = observeLigueRepository.findByObservateur(observateur);
+            List<Ligue> ligues = new ArrayList<>();
+            for (ObserveLigue observeLigue : observeLigues) {
+                Ligue ligue = observeLigue.getLigue();
+                if (!ligues.contains(ligue) && ligue.getPrivacy().equals("private")) {
+                    ligues.add(observeLigue.getLigue());
+                }
+            }
+            return ligues;
+        }
+        return null;
+    }
 }

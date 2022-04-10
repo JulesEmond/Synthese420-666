@@ -62,4 +62,9 @@ export class VoirLigueComponent implements OnInit {
     }
   }
 
+  public inviteLigue(ligueId : number) {
+    sessionStorage.setItem('Ligue', ligueId.toString());
+    this.router.navigate(['/invitation']);
+  }
+
 }

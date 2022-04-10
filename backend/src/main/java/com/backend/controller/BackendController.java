@@ -71,7 +71,7 @@ public class BackendController {
     }
 
     @GetMapping(value = "/backend/ligue/public")
-    public List<Ligue> findPublicLigue(){
+    public List<Ligue> findLiguePublic(){
         return ligueRepository.findByPrivacy("public");
     }
 
@@ -138,5 +138,15 @@ public class BackendController {
     @GetMapping(value = "/backend/joueur/{id}")
     public Joueur findJoueur(@PathVariable("id") int id) {
         return joueurRepository.findById(id);
+    }
+
+    @GetMapping(value="/backend/observateur/invite/{username}/{id}")
+    public Observateur inviteObservateur (@PathVariable("username") String username, @PathVariable("id") int id){
+        return service.inviteLigue(username, id);
+    }
+
+    @GetMapping(value = "/backend/ligue/prive/{id}")
+    public List<Ligue> findPriveByObservateur(@PathVariable("id") int id){
+        return service.findLiguePrive(id);
     }
 }
