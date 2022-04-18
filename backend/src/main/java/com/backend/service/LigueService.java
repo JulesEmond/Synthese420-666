@@ -3,8 +3,12 @@ package com.backend.service;
 import com.backend.model.*;
 import com.backend.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +28,10 @@ public class LigueService {
     private ObserveLigueRepository observeLigueRepository;
 
     @Autowired
-    EquipeService equipeService;
+    private EquipeService equipeService;
+
+    @Autowired
+    private JavaMailSender mailSender;
 
     public Ligue createLigue (Ligue ligue){
         ligueRepository.save(ligue);
@@ -68,6 +75,7 @@ public class LigueService {
             invitation.setLigue(ligue);
             if (!observeLigueRepository.existsByObservateurAndLigue(observateur, ligue)){
                 observeLigueRepository.save(invitation);
+                sendEmail(observateur, ligue);
                 return observateur;
             }
         }
@@ -88,5 +96,18 @@ public class LigueService {
             return ligues;
         }
         return null;
+    }
+
+    private void sendEmail(Observateur observateur, Ligue ligue){
+        try {
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message);
+            helper.addTo(observateur.getEmail());
+            helper.setSubject("Vous avez été invitez!");
+            helper.setText("On vous a donné accès aux informations de la ligue " + ligue.getName());
+            mailSender.send(message);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
     }
 }

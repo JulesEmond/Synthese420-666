@@ -15,7 +15,7 @@ import java.util.List;
 public class EquipeService {
 
     @Autowired
-    JoueurService joueurService;
+    private JoueurService joueurService;
 
     @Autowired
     private LigueRepository ligueRepository;

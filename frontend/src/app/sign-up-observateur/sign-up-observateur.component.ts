@@ -17,6 +17,7 @@ export class SignUpObservateurComponent implements OnInit {
   signinObservateurForm = new FormGroup({
     username : new FormControl('', Validators.required),
     password : new FormControl('', Validators.required),
+    email : new FormControl('', Validators.required),
     firstname : new FormControl('', Validators.required),
     lastname : new FormControl('', Validators.required),
   });
